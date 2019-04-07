@@ -1,14 +1,15 @@
 import React from 'react'
+import {Provider} from 'react-redux'
+import store from '../store'
 import './App.scss'
-import ExampleComponent from './ExampleComponent/ExampleComponent'
+import PostForm from './PostForm/PostForm'
+import PostList from './PostList/PostList'
 
 const App = () => (
-    <>
-        <div className='large-text'>
-            Hello world! :)
-        </div>
-        <ExampleComponent name='John Doe' age='25'/>
-    </>
+    <Provider store={store}>
+        <PostForm/>
+        <PostList posts={[{id: 1}]}/>
+    </Provider>
 )
 
 export default App
