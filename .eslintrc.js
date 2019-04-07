@@ -23,6 +23,13 @@ module.exports = {
         'indent': ['error', 4, {
             'SwitchCase': 1
         }],
+        'jsx-quotes': ['error', 'prefer-single'],
+        'quotes': ['error', 'single'],
+        'semi': ['error', 'never'],
+        'object-curly-spacing': ['error', 'never'],
+        'array-bracket-spacing': ['error', 'never'],
+        'no-unused-vars': ['warn'],
+        'no-unreachable': ['warn'],
         'react/jsx-indent': ['error', 4],
         'react/jsx-indent-props': ['error', 4],
         'react/jsx-one-expression-per-line': ['off'],
@@ -32,12 +39,6 @@ module.exports = {
         }],
         'react/no-set-state': 'off',
         'react/no-unused-state': 'warn',
-        'jsx-quotes': ['error', 'prefer-single'],
-        'quotes': ['error', 'single'],
-        'semi': ['error', 'never'],
-        'object-curly-spacing': ['error', 'never'],
-        'array-bracket-spacing': ['error', 'never'],
-        'no-unused-vars': ['warn'],
-        'no-unreachable': ['warn'],
+        'react/destructuring-assignment': ['off'],
     },
-};
+}
