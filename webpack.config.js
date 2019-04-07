@@ -1,31 +1,35 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path')
 
 module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
+                resolve: {
+                    extensions: [".js", ".jsx"]
+                },
                 exclude: /node_modules/,
-                loaders: ["babel-loader"]
+                loaders: ['babel-loader']
             },
             {
                 test: /\.html$/,
-                loaders: ["html-loader"]
+                loaders: ['html-loader']
             },
             {
                 test: /\.scss$/,
-                loaders: ["style-loader", "css-loader", "sass-loader"]
+                loaders: ['style-loader', 'css-loader', 'sass-loader']
             }
         ]
     },
+    entry: './src/index.jsx',
     output: {
         filename: 'bundle.js'
     },
     plugins: [
         new HtmlWebPackPlugin({
-            template: "./static/index.html",
-            filename: "./index.html"
+            template: './static/index.html',
+            filename: './index.html'
         })
     ],
     devServer: {
