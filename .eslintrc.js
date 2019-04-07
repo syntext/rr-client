@@ -32,6 +32,7 @@ module.exports = {
         'array-bracket-spacing': ['error', 'never'],
         'no-unused-vars': ['warn'],
         'no-unreachable': ['warn'],
+        'comma-dangle': ['off'],
         'react/jsx-indent': ['error', 4],
         'react/jsx-indent-props': ['error', 4],
         'react/jsx-one-expression-per-line': ['off'],
@@ -42,5 +43,8 @@ module.exports = {
         'react/no-set-state': 'off',
         'react/no-unused-state': 'warn',
         'react/destructuring-assignment': ['off'],
+        'react/forbid-prop-types': ['error', {
+            'forbid': ['any']
+        }]
     },
 }
