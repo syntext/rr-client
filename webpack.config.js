@@ -10,15 +10,24 @@ module.exports = {
                     extensions: [".js", ".jsx"]
                 },
                 exclude: /node_modules/,
-                loaders: ['babel-loader']
+                loaders: ['babel-loader'],
+            },
+            {
+                enforce: 'pre',
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                loader: 'eslint-loader',
+                options: {
+                    fix: true,
+                },
             },
             {
                 test: /\.html$/,
-                loaders: ['html-loader']
+                loaders: ['html-loader'],
             },
             {
                 test: /\.scss$/,
-                loaders: ['style-loader', 'css-loader', 'sass-loader']
+                loaders: ['style-loader', 'css-loader', 'sass-loader'],
             }
         ]
     },

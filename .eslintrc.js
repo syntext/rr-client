@@ -19,10 +19,22 @@ module.exports = {
         'react',
     ],
     rules: {
+        /* See: https://github.com/airbnb/javascript/blob/eslint-config-airbnb-v17.1.0/packages/eslint-config-airbnb/rules/react.js */
         'indent': ['error', 4],
         'react/jsx-indent': ['error', 4],
-        'semi': ['error', 'never'],
+        'react/jsx-indent-props': ['error', 4],
+        'react/jsx-one-expression-per-line': ['off'],
+        'react/jsx-tag-spacing': ['error', {
+            'beforeClosing': 'never',
+            'beforeSelfClosing': 'never',
+        }],
+        'react/no-set-state': 'off',
+        'react/no-unused-state': 'warn',
+        'jsx-quotes': ['error', 'prefer-single'],
         'quotes': ['error', 'single'],
-        'jsx-quotes': ['error', 'prefer-single']
+        'semi': ['error', 'never'],
+        'object-curly-spacing': ['error', 'never'],
+        'array-bracket-spacing': ['error', 'never'],
+        'no-unused-vars': ['warn'],
     },
 };
