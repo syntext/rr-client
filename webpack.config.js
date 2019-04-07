@@ -1,4 +1,4 @@
-const HtmlWebPackPlugin = require('html-webpack-plugin');
+const HtmlWebPackPlugin = require('html-webpack-plugin')
 const path = require('path')
 
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 resolve: {
-                    extensions: [".js", ".jsx"]
+                    extensions: ['.js', '.jsx'],
                 },
                 exclude: /node_modules/,
                 loaders: ['babel-loader'],
@@ -28,24 +28,24 @@ module.exports = {
             {
                 test: /\.scss$/,
                 loaders: ['style-loader', 'css-loader', 'sass-loader'],
-            }
-        ]
+            },
+        ],
     },
     entry: './src/index.jsx',
     output: {
-        filename: 'bundle.js'
+        filename: 'bundle.js',
     },
     plugins: [
         new HtmlWebPackPlugin({
             template: './static/index.html',
-            filename: './index.html'
-        })
+            filename: './index.html',
+        }),
     ],
     devServer: {
         port: 8008,
         hot: true,
         compress: false,
         contentBase: path.join(__dirname, 'dist'),
-        writeToDisk: false
-    }
+        writeToDisk: false,
+    },
 }
