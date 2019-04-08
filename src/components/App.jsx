@@ -8,7 +8,7 @@ import PostList from './PostList/PostList'
 const App = () => (
     <Provider store={store}>
         <PostForm/>
-        <PostList posts={[{id: 1}]}/>
+        <PostList/>
     </Provider>
 )
 
