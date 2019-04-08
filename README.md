@@ -5,6 +5,7 @@ RR Client
 
 - ReactJS
 - Redux
+- Redux Saga
 - SASS
 - Axios HTTP client
 - ESLint
