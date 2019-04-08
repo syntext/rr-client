@@ -16,7 +16,7 @@ class PostList extends React.Component {
     }
 
     render() {
-        const postElements = this.props.posts.map(post => (
+        const postElements = this.props.posts.map((post) => (
             <li key={post.id}>{post.title}</li>
         ))
         return (
@@ -39,7 +39,7 @@ PostList.defaultProps = {
     newPost: undefined,
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     posts: state.posts.items,
     newPost: state.posts.item,
 })

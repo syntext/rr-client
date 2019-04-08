@@ -14,7 +14,7 @@ export const fetchPosts = () => (dispatch) => {
         })
 }
 
-export const createPost = data => (dispatch) => {
+export const createPost = (data) => (dispatch) => {
     Http.post('https://jsonplaceholder.typicode.com/posts', data)
         .then((res) => {
             dispatch({
