@@ -28,6 +28,7 @@ module.exports = {
         'max-len': ['error', {
             'code': 120
         }],
+        'arrow-parens': ['error', 'always'],
         'jsx-quotes': ['error', 'prefer-single'],
         'quotes': ['error', 'single'],
         'semi': ['error', 'never'],
