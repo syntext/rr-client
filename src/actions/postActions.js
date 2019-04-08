@@ -1,9 +1,9 @@
 import {FETCH_POSTS, NEW_POST} from './types'
 
-export const fetchPosts = () => (dispatch) => {
-    dispatch({type: FETCH_POSTS})
-}
+export const fetchPosts = () => (
+    {type: FETCH_POSTS}
+)
 
-export const createPost = (data) => (dispatch) => {
-    dispatch({type: NEW_POST, payload: data})
-}
+export const createPost = (data) => (
+    {type: NEW_POST, payload: data}
+)
