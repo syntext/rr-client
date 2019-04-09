@@ -1,16 +1,22 @@
-import {LOGIN_USER_SUCCESS} from './authActionTypes'
+import {LOGIN_USER_SUCCESS, LOGOUT_USER} from './authActionTypes'
 
 const initialState = {
-    token: localStorage.getItem('token'),
-    authenticated: false,
+    token: localStorage.getItem('token')
 }
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_USER_SUCCESS:
+            localStorage.setItem('token', action.payload.token)
             return {
                 ...state,
                 ...action.payload
+            }
+        case LOGOUT_USER:
+            localStorage.removeItem('token')
+            return {
+                ...state,
+                token: null
             }
         default:
             return state

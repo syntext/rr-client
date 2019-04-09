@@ -6,7 +6,7 @@ import {Redirect, Route} from 'react-router-dom'
 const RestrictedRoute = ({component: Component, auth, ...rest}) => (
     <Route
         render={(props) => (
-            auth.authenticated === true
+            auth.token !== null
                 ? <Component {...props}/>
                 : <Redirect to='/login'/>
         )}

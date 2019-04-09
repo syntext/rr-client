@@ -6,8 +6,7 @@ function* loginUser() {
 
     // todo: authentication request
     const result = {
-        token: null,
-        authenticated: true,
+        token: 'abc'
     }
 
     yield put({type: LOGIN_USER_SUCCESS, payload: result})

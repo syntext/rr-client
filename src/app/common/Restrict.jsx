@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 class Restrict extends React.Component {
     render() {
         return (
-            this.props.auth.authenticated === !this.props.inverse && this.props.children
+            (this.props.auth.token !== null) === !this.props.inverse && this.props.children
         )
     }
 }

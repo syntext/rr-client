@@ -2,25 +2,32 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import './LoginForm.scss'
 
-const LoginForm = ({onLogin}) => (
-    <div className='login-form'>
-        <form onSubmit={onLogin}>
-            <label htmlFor='username'>
-                Username
-                <input type='text' name='username' id='username'/>
-            </label>
+const LoginForm = ({onLogin: loginUser}) => {
+    const submitForm = (e) => {
+        e.preventDefault()
+        loginUser(e.target.username.value, e.target.password.value)
+    }
 
-            <label htmlFor='username'>
-                Password
-                <input type='password' name='password' id='password'/>
-            </label>
+    return (
+        <div className='login-form'>
+            <form onSubmit={submitForm}>
+                <label htmlFor='username'>
+                    Username
+                    <input type='text' name='username' id='username'/>
+                </label>
 
-            <button type='submit'>
-                Login
-            </button>
-        </form>
-    </div>
-)
+                <label htmlFor='username'>
+                    Password
+                    <input type='password' name='password' id='password'/>
+                </label>
+
+                <button type='submit'>
+                    Login
+                </button>
+            </form>
+        </div>
+    )
+}
 
 LoginForm.propTypes = {
     onLogin: PropTypes.func.isRequired

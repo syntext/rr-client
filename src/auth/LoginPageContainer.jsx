@@ -6,14 +6,14 @@ import {loginUser} from './authActions'
 import LoginPage from './LoginPage'
 
 class LoginPageContainer extends React.Component {
-    loginHandler = (username, password) => {
+    loginUser = (username, password) => {
         this.props.loginUser(username, password)
     }
 
     render() {
         return (
-            !this.props.auth.authenticated
-                ? <LoginPage onLogin={this.loginHandler}/>
+            !this.props.auth.token
+                ? <LoginPage onLogin={this.loginUser}/>
                 : <Redirect to='/'/>
         )
     }
