@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import './LoginForm.scss'
 
-const LoginForm = ({onSubmitLogin}) => (
+const LoginForm = ({onLogin}) => (
     <div className='login-form'>
-        <form onSubmit={onSubmitLogin}>
+        <form onSubmit={onLogin}>
             <label htmlFor='username'>
                 Username
                 <input type='text' name='username' id='username'/>
@@ -23,7 +23,7 @@ const LoginForm = ({onSubmitLogin}) => (
 )
 
 LoginForm.propTypes = {
-    onSubmitLogin: PropTypes.func.isRequired
+    onLogin: PropTypes.func.isRequired
 }
 
 export default LoginForm

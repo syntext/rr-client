@@ -6,15 +6,14 @@ import {loginUser} from './authActions'
 import LoginPage from './LoginPage'
 
 class LoginPageContainer extends React.Component {
-    loginSubmitHandler = (e) => {
-        e.preventDefault()
-        this.props.loginUser(e.target.username.value, e.target.password.value)
+    loginHandler = (username, password) => {
+        this.props.loginUser(username, password)
     }
 
     render() {
         return (
             !this.props.auth.authenticated
-                ? <LoginPage onSubmitLogin={this.loginSubmitHandler}/>
+                ? <LoginPage onLogin={this.loginHandler}/>
                 : <Redirect to='/'/>
         )
     }

@@ -3,14 +3,14 @@ import React from 'react'
 import LoginForm from './LoginForm'
 import './LoginPage.scss'
 
-const LoginPage = ({onSubmitLogin}) => (
+const LoginPage = ({onLogin}) => (
     <div className='login-page'>
-        <LoginForm onSubmitLogin={onSubmitLogin}/>
+        <LoginForm onLogin={onLogin}/>
     </div>
 )
 
 LoginPage.propTypes = {
-    onSubmitLogin: PropTypes.func.isRequired
+    onLogin: PropTypes.func.isRequired
 }
 
 export default LoginPage

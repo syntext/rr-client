@@ -1,44 +1,22 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import {connect} from 'react-redux'
-import {createPost} from './postActions'
 
-class PostForm extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            title: '',
-        }
-    }
-
-    onChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value,
-        })
-    }
-
-    onSubmit = (e) => {
+const PostForm = ({onSubmit: submit}) => {
+    const onSubmit = (e) => {
         e.preventDefault()
-
-        const post = {
-            title: this.state.title,
-        }
-
-        this.props.createPost(post)
+        submit({title: e.target.title.value})
     }
 
-    render() {
-        return (
-            <form>
-                <input type='text' name='title' onChange={this.onChange} value={this.state.title}/>
-                <button type='submit' onClick={this.onSubmit}>Submit</button>
-            </form>
-        )
-    }
+    return (
+        <form onSubmit={onSubmit}>
+            <input type='text' name='title'/>
+            <button type='submit'>Submit</button>
+        </form>
+    )
 }
 
 PostForm.propTypes = {
-    createPost: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired
 }
 
-export default connect(null, {createPost})(PostForm)
+export default PostForm

@@ -3,21 +3,16 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Redirect, Route} from 'react-router-dom'
 
-class RestrictedRoute extends React.Component {
-    render() {
-        const {component: Component, auth, ...rest} = this.props
-        return (
-            <Route
-                {...rest}
-                render={(props) => (
-                    auth.authenticated === true
-                        ? <Component {...props}/>
-                        : <Redirect to='/login'/>
-                )}
-            />
-        )
-    }
-}
+const RestrictedRoute = ({component: Component, auth, ...rest}) => (
+    <Route
+        render={(props) => (
+            auth.authenticated === true
+                ? <Component {...props}/>
+                : <Redirect to='/login'/>
+        )}
+        {...rest}
+    />
+)
 
 RestrictedRoute.propTypes = {
     component: PropTypes.func.isRequired,
