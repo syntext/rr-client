@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchPosts} from '../../actions/postActions'
+import {fetchPosts} from './postActions'
 import './PostList.scss'
 
 class PostList extends React.Component {

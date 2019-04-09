@@ -1,4 +1,4 @@
-import {FETCH_POSTS, NEW_POST} from './types'
+import {FETCH_POSTS, NEW_POST} from './postActionTypes'
 
 export const fetchPosts = () => (
     {type: FETCH_POSTS}

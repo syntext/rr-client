@@ -2,7 +2,7 @@ import Http from 'axios'
 import {put, takeLatest} from 'redux-saga/effects'
 import {
     FETCH_POSTS, FETCH_POSTS_START, FETCH_POSTS_SUCCESS, NEW_POST, NEW_POST_START, NEW_POST_SUCCESS
-} from '../actions/types'
+} from './postActionTypes'
 
 function* fetchPosts() {
     yield put({type: FETCH_POSTS_START})

@@ -1,4 +1,4 @@
-import {FETCH_POSTS_SUCCESS, NEW_POST_SUCCESS} from '../actions/types'
+import {FETCH_POSTS_SUCCESS, NEW_POST_SUCCESS} from './postActionTypes'
 
 const initialState = {
     items: [],

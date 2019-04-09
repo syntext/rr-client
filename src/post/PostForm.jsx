@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import {connect} from 'react-redux'
-import {createPost} from '../../actions/postActions'
+import {createPost} from './postActions'
 
 class PostForm extends React.Component {
     constructor(props) {
