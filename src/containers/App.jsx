@@ -1,9 +1,8 @@
 import React from 'react'
 import {Provider} from 'react-redux'
 import store from '../store'
-import './App.scss'
-import PostForm from './PostForm/PostForm'
-import PostList from './PostList/PostList'
+import PostForm from '../presentation/PostForm/PostForm'
+import PostList from '../presentation/PostList/PostList'
 
 const App = () => (
     <Provider store={store}>
