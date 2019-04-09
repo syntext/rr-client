@@ -51,5 +51,6 @@ module.exports = {
         compress: false,
         contentBase: path.join(__dirname, 'dist'),
         writeToDisk: false,
+        historyApiFallback: true
     },
 }
