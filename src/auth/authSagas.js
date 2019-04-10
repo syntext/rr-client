@@ -1,8 +1,8 @@
 import {put, takeLatest} from 'redux-saga/effects'
-import {LOGIN_USER, LOGIN_USER_START, LOGIN_USER_SUCCESS} from './authActionTypes'
+import {USER_LOGIN, USER_LOGIN_START, LOGIN_USER_SUCCESS} from './authActionTypes'
 
 function* loginUser() {
-    yield put({type: LOGIN_USER_START})
+    yield put({type: USER_LOGIN_START})
 
     // todo: authentication request
     const result = {
@@ -13,5 +13,5 @@ function* loginUser() {
 }
 
 export function* watchLoginUser() {
-    yield takeLatest(LOGIN_USER, loginUser)
+    yield takeLatest(USER_LOGIN, loginUser)
 }

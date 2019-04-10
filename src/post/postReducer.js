@@ -1,4 +1,4 @@
-import {FETCH_POSTS_SUCCESS, NEW_POST_SUCCESS} from './postActionTypes'
+import {POSTS_FETCH_SUCCESS, POSTS_CREATE_SUCCESS} from './postActionTypes'
 
 const initialState = {
     items: [],
@@ -7,12 +7,12 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_POSTS_SUCCESS:
+        case POSTS_FETCH_SUCCESS:
             return {
                 ...state,
                 items: action.payload,
             }
-        case NEW_POST_SUCCESS:
+        case POSTS_CREATE_SUCCESS:
             return {
                 ...state,
                 item: action.payload,

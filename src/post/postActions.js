@@ -1,9 +1,9 @@
-import {FETCH_POSTS, NEW_POST} from './postActionTypes'
+import {POSTS_FETCH, POSTS_CREATE} from './postActionTypes'
 
 export const fetchPosts = () => (
-    {type: FETCH_POSTS}
+    {type: POSTS_FETCH}
 )
 
 export const createPost = (data) => (
-    {type: NEW_POST, payload: data}
+    {type: POSTS_CREATE, payload: data}
 )

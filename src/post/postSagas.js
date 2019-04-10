@@ -1,31 +1,31 @@
 import Http from 'axios'
 import {put, takeLatest} from 'redux-saga/effects'
 import {
-    FETCH_POSTS, FETCH_POSTS_START, FETCH_POSTS_SUCCESS, NEW_POST, NEW_POST_START, NEW_POST_SUCCESS
+    POSTS_FETCH, POSTS_FETCH_START, POSTS_FETCH_SUCCESS, POSTS_CREATE, POSTS_CREATE_START, POSTS_CREATE_SUCCESS
 } from './postActionTypes'
 
 function* fetchPosts() {
-    yield put({type: FETCH_POSTS_START})
+    yield put({type: POSTS_FETCH_START})
 
     const response = yield Http.get('https://jsonplaceholder.typicode.com/posts')
     const posts = response.data
 
-    yield put({type: FETCH_POSTS_SUCCESS, payload: posts})
+    yield put({type: POSTS_FETCH_SUCCESS, payload: posts})
 }
 
 function* newPost(action) {
-    yield put({type: NEW_POST_START})
+    yield put({type: POSTS_CREATE_START})
 
     const response = yield Http.post('https://jsonplaceholder.typicode.com/posts', action.payload)
     const post = response.data
 
-    yield put({type: NEW_POST_SUCCESS, payload: post})
+    yield put({type: POSTS_CREATE_SUCCESS, payload: post})
 }
 
 export function* watchFetchPosts() {
-    yield takeLatest(FETCH_POSTS, fetchPosts)
+    yield takeLatest(POSTS_FETCH, fetchPosts)
 }
 
 export function* watchNewPost() {
-    yield takeLatest(NEW_POST, newPost)
+    yield takeLatest(POSTS_CREATE, newPost)
 }

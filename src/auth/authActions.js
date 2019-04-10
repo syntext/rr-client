@@ -1,9 +1,9 @@
-import {LOGIN_USER, LOGOUT_USER} from './authActionTypes'
+import {USER_LOGIN, USER_LOGOUT} from './authActionTypes'
 
 export const loginUser = (username, password) => (
-    {type: LOGIN_USER, payload: {username, password}}
+    {type: USER_LOGIN, payload: {username, password}}
 )
 
 export const logoutUser = () => (
-    {type: LOGOUT_USER}
+    {type: USER_LOGOUT}
 )
