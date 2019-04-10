@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import {connect} from 'react-redux'
-import {BrowserRouter, Redirect, Route} from 'react-router-dom'
+import {Redirect, Route, Router} from 'react-router-dom'
 import {logoutUser} from '../auth/authActions'
 import LoginPageContainer from '../auth/LoginPageContainer'
 import PostPageContainer from '../post/PostPageContainer'
 import UserPageContainer from '../user/UserPageContainer'
 import RestrictedRoute from './common/RestrictedRoute'
 import Header from './Header'
+import history from './history'
 
 const AppRouter = (props) => (
-    <BrowserRouter>
+    <Router history={history}>
         <Route path='/' component={Header}/>
         <div className='body-wrapper'>
             <Route path='/' exact component={PostPageContainer}/>
@@ -24,7 +25,7 @@ const AppRouter = (props) => (
             />
             <RestrictedRoute path='/users' component={UserPageContainer}/>
         </div>
-    </BrowserRouter>
+    </Router>
 )
 
 AppRouter.propTypes = {
