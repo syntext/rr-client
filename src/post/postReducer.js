@@ -1,8 +1,8 @@
-import {POSTS_FETCH_SUCCESS, POSTS_CREATE_SUCCESS} from './postActionTypes'
+import {POSTS_CREATE_SUCCESS, POSTS_FETCH_SUCCESS} from './postActionTypes'
 
 const initialState = {
     items: [],
-    item: {},
+    item: null,
 }
 
 export default (state = initialState, action) => {
