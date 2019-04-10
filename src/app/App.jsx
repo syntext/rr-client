@@ -4,10 +4,10 @@ import AppRouter from './AppRouter'
 import store from './store'
 import './styles.scss'
 
-const AppContainer = () => (
+const App = () => (
     <Provider store={store}>
         <AppRouter/>
     </Provider>
 )
 
-export default AppContainer
+export default App
