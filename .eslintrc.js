@@ -26,7 +26,7 @@ module.exports = {
             'SwitchCase': 1
         }],
         'max-len': ['error', {
-            'code': 120
+            'code': 140
         }],
         'arrow-parens': ['error', 'always'],
         'jsx-quotes': ['error', 'prefer-single'],
