@@ -6,8 +6,8 @@ const initialState = {
     infoMessages: [],
 }
 
-const addNotification = (state, message, httpResponse) => {
-    const result = message || `${httpResponse.status} ${httpResponse.statusText}`
+const addNotification = (state, {message, httpResponse}) => {
+    const result = message || httpResponse ? `${httpResponse.status} ${httpResponse.statusText}`.trim() : 'null'
     return {
         messages: [
             ...state.messages,
@@ -23,7 +23,7 @@ const removeNotification = (state, id) => ({
 export default (state = initialState, action) => {
     switch (action.type) {
         case NOTIFICATION_ADD:
-            return addNotification(state, action.payload.message, action.payload.httpResponse)
+            return addNotification(state, action.payload)
         case NOTIFICATION_REMOVE:
             return removeNotification(state, action.payload)
         default:

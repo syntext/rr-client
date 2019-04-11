@@ -1,6 +1,6 @@
 import Http from 'axios'
 import {put, takeLatest} from 'redux-saga/effects'
-import {NOTIFICATION_ADD} from '../notification/notificationTypes'
+import {putApiException} from '../common/sagaUtils'
 import {
     POSTS_CREATE,
     POSTS_CREATE_FAILED,
@@ -12,13 +12,6 @@ import {
     POSTS_FETCH_SUCCESS
 } from './postActionTypes'
 
-function addNotification(message, httpResponse) {
-    return put({
-        type: NOTIFICATION_ADD,
-        payload: {message, httpResponse}
-    })
-}
-
 function* fetchPosts() {
     yield put({type: POSTS_FETCH_START})
 
@@ -28,8 +21,8 @@ function* fetchPosts() {
 
         yield put({type: POSTS_FETCH_SUCCESS, payload: posts})
     } catch (e) {
+        yield putApiException(e)
         yield put({type: POSTS_FETCH_FAILED})
-        yield addNotification(e.response.data.message, e.response)
     }
 }
 
@@ -42,8 +35,8 @@ function* newPost(action) {
 
         yield put({type: POSTS_CREATE_SUCCESS, payload: post})
     } catch (e) {
+        yield putApiException(e)
         yield put({type: POSTS_CREATE_FAILED})
-        yield addNotification(e.response.data.message, e.response)
     }
 }
 
