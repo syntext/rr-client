@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Route, Router, Switch} from 'react-router-dom'
 import LoginPageContainer from '../auth/LoginPageContainer'
 import LogoutPageContainer from '../auth/LogoutPageContainer'
-import RestrictedRoute from '../auth/RestrictedRoute'
+import RestrictedRouteContainer from '../auth/RestrictedRouteContainer'
 import NotificationContainer from '../notification/NotificationContainer'
 import PostPageContainer from '../post/PostPageContainer'
 import UserPageContainer from '../user/UserPageContainer'
@@ -20,7 +20,7 @@ const AppContainer = () => (
                 <Route path='/' exact component={PostPageContainer}/>
                 <Route path='/login' component={LoginPageContainer}/>
                 <Route path='/logout' component={LogoutPageContainer}/>
-                <RestrictedRoute path='/users' component={UserPageContainer}/>
+                <RestrictedRouteContainer path='/users' component={UserPageContainer}/>
                 <Route component={PageNotFound}/>
             </Switch>
         </div>

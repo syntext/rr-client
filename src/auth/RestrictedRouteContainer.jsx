@@ -3,7 +3,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {NavLink, Route} from 'react-router-dom'
 
-const RestrictedRoute = ({component: Component, auth, ...rest}) => (
+const RestrictedRouteContainer = ({component: Component, auth, ...rest}) => (
     <Route
         render={(props) => (
             auth.token !== null
@@ -18,12 +18,12 @@ const RestrictedRoute = ({component: Component, auth, ...rest}) => (
     />
 )
 
-RestrictedRoute.propTypes = {
+RestrictedRouteContainer.propTypes = {
     component: PropTypes.func.isRequired,
     auth: PropTypes.object
 }
 
-RestrictedRoute.defaultProps = {
+RestrictedRouteContainer.defaultProps = {
     auth: {}
 }
 
@@ -31,4 +31,4 @@ const mapStateToProps = (state) => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps, null)(RestrictedRoute)
+export default connect(mapStateToProps, null)(RestrictedRouteContainer)
