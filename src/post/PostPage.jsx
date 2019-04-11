@@ -3,9 +3,9 @@ import React from 'react'
 import PostForm from './PostForm'
 import PostList from './PostList'
 
-const PostPage = ({posts, onPostFormSubmit: postFormSubmit}) => (
+const PostPage = ({posts, onPostFormSubmit}) => (
     <div className='post-page'>
-        <PostForm onSubmit={postFormSubmit}/>
+        <PostForm onSubmit={onPostFormSubmit}/>
         <PostList posts={posts}/>
     </div>
 )

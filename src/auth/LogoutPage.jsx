@@ -11,7 +11,7 @@ const LogoutPage = () => {
     })
 
     if (ttl === 0) {
-        return <Redirect to='/'/>
+        return <Redirect to='/login'/>
     }
 
     return (

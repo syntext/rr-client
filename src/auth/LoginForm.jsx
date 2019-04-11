@@ -3,22 +3,22 @@ import React from 'react'
 import './LoginForm.scss'
 
 const LoginForm = ({onLogin: loginUser}) => {
-    const submitForm = (e) => {
+    const submitHandler = (e) => {
         e.preventDefault()
         loginUser(e.target.username.value, e.target.password.value)
     }
 
     return (
         <div className='login-form'>
-            <form onSubmit={submitForm}>
+            <form onSubmit={submitHandler}>
                 <label htmlFor='username'>
                     Username
-                    <input type='text' name='username' id='username'/>
+                    <input type='text' name='username' id='username' required/>
                 </label>
 
                 <label htmlFor='username'>
                     Password
-                    <input type='password' name='password' id='password'/>
+                    <input type='password' name='password' id='password' required/>
                 </label>
 
                 <button type='submit'>

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import {connect} from 'react-redux'
 
-class Restrict extends React.Component {
+class RestrictedContainer extends React.Component {
     render() {
         return (
             (this.props.auth.token !== null) === !this.props.inverse && this.props.children
@@ -10,13 +10,13 @@ class Restrict extends React.Component {
     }
 }
 
-Restrict.propTypes = {
+RestrictedContainer.propTypes = {
     children: PropTypes.object.isRequired,
     inverse: PropTypes.bool,
     auth: PropTypes.object
 }
 
-Restrict.defaultProps = {
+RestrictedContainer.defaultProps = {
     inverse: false,
     auth: {}
 }
@@ -25,4 +25,4 @@ const mapStateToProps = (state) => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps, null)(Restrict)
+export default connect(mapStateToProps, null)(RestrictedContainer)

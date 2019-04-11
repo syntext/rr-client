@@ -3,17 +3,19 @@ import {connect} from 'react-redux'
 import {Route, Router, Switch} from 'react-router-dom'
 import LoginPageContainer from '../auth/LoginPageContainer'
 import LogoutPageContainer from '../auth/LogoutPageContainer'
+import RestrictedRoute from '../auth/RestrictedRoute'
+import NotificationContainer from '../notification/NotificationContainer'
 import PostPageContainer from '../post/PostPageContainer'
 import UserPageContainer from '../user/UserPageContainer'
-import RestrictedRoute from './common/RestrictedRoute'
 import Header from './Header'
 import history from './history'
 import PageNotFound from './PageNotFound'
 
-const AppRouter = () => (
+const AppContainer = () => (
     <Router history={history}>
         <Route path='/' component={Header}/>
         <div className='body-wrapper'>
+            <NotificationContainer/>
             <Switch>
                 <Route path='/' exact component={PostPageContainer}/>
                 <Route path='/login' component={LoginPageContainer}/>
@@ -25,4 +27,4 @@ const AppRouter = () => (
     </Router>
 )
 
-export default connect(null, null)(AppRouter)
+export default connect(null, null)(AppContainer)

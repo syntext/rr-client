@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import Restrict from './common/Restrict'
+import RestrictedContainer from '../auth/RestrictedContainer'
 import './Header.scss'
 
 const Header = () => (
@@ -13,12 +13,12 @@ const Header = () => (
                 <Link to='/users'>Users</Link>
             </li>
             <li className='pull-right'>
-                <Restrict inverse>
+                <RestrictedContainer inverse>
                     <Link to='/login' className='active'>Login</Link>
-                </Restrict>
-                <Restrict>
+                </RestrictedContainer>
+                <RestrictedContainer>
                     <Link to='/logout' className='active'>Logout</Link>
-                </Restrict>
+                </RestrictedContainer>
             </li>
         </ul>
     </div>

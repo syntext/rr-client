@@ -1,5 +1,6 @@
 import Http from 'axios'
 import {put, takeLatest} from 'redux-saga/effects'
+import {NOTIFICATION_ADD} from '../notification/notificationTypes'
 import {
     POSTS_CREATE,
     POSTS_CREATE_FAILED,
@@ -11,6 +12,13 @@ import {
     POSTS_FETCH_SUCCESS
 } from './postActionTypes'
 
+function addNotification(message, httpResponse) {
+    return put({
+        type: NOTIFICATION_ADD,
+        payload: {message, httpResponse}
+    })
+}
+
 function* fetchPosts() {
     yield put({type: POSTS_FETCH_START})
 
@@ -20,7 +28,8 @@ function* fetchPosts() {
 
         yield put({type: POSTS_FETCH_SUCCESS, payload: posts})
     } catch (e) {
-        yield put({type: POSTS_FETCH_FAILED, payload: e.response})
+        yield put({type: POSTS_FETCH_FAILED})
+        yield addNotification(e.response.data.message, e.response)
     }
 }
 
@@ -28,12 +37,13 @@ function* newPost(action) {
     yield put({type: POSTS_CREATE_START})
 
     try {
-        const response = yield Http.post('https://jsonplaceholder.typicode.com/posts', action.payload)
+        const response = yield Http.post('https://jsonplaceholder.typicode.com/posts1', action.payload)
         const post = response.data
 
         yield put({type: POSTS_CREATE_SUCCESS, payload: post})
     } catch (e) {
-        yield put({type: POSTS_CREATE_FAILED, payload: e.response})
+        yield put({type: POSTS_CREATE_FAILED})
+        yield addNotification(e.response.data.message, e.response)
     }
 }
 

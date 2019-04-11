@@ -1,14 +1,18 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import {connect} from 'react-redux'
-import {Redirect, Route} from 'react-router-dom'
+import {NavLink, Route} from 'react-router-dom'
 
 const RestrictedRoute = ({component: Component, auth, ...rest}) => (
     <Route
         render={(props) => (
             auth.token !== null
                 ? <Component {...props}/>
-                : <Redirect to='/login'/>
+                : (
+                    <div className='restricted-content'>
+                        You need to be logged in to access this page. Click <NavLink to='/login'>here</NavLink> to login.
+                    </div>
+                )
         )}
         {...rest}
     />
