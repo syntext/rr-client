@@ -6,6 +6,7 @@ RR Client
 - ReactJS
 - Redux
 - Redux Saga
+- Authentication with JWT
 - SASS
 - Axios HTTP client
 - ESLint
