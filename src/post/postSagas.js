@@ -1,6 +1,6 @@
-import Http from 'axios'
-import {put, takeLatest} from 'redux-saga/effects'
-import {putApiException} from '../common/sagaUtils'
+import {call, put, takeLatest} from 'redux-saga/effects'
+import apiClient from '../common/apiClient'
+import {putApiExceptionNotification} from '../common/sagaUtils'
 import {
     POSTS_CREATE,
     POSTS_CREATE_FAILED,
@@ -16,12 +16,12 @@ function* fetchPosts() {
     yield put({type: POSTS_FETCH_START})
 
     try {
-        const response = yield Http.get('https://jsonplaceholder.typicode.com/posts')
+        const response = yield call(apiClient().get, 'http://localhost:8009/posts')
         const posts = response.data
 
         yield put({type: POSTS_FETCH_SUCCESS, payload: posts})
     } catch (e) {
-        yield putApiException(e)
+        yield putApiExceptionNotification(e)
         yield put({type: POSTS_FETCH_FAILED})
     }
 }
@@ -30,12 +30,11 @@ function* newPost(action) {
     yield put({type: POSTS_CREATE_START})
 
     try {
-        const response = yield Http.post('https://jsonplaceholder.typicode.com/posts1', action.payload)
-        const post = response.data
+        const response = yield call(apiClient().post, 'http://localhost:8009/posts', action.payload)
 
-        yield put({type: POSTS_CREATE_SUCCESS, payload: post})
+        yield put({type: POSTS_CREATE_SUCCESS, payload: response.data})
     } catch (e) {
-        yield putApiException(e)
+        yield putApiExceptionNotification(e)
         yield put({type: POSTS_CREATE_FAILED})
     }
 }

@@ -13,12 +13,12 @@ const LoginForm = ({onLogin: loginUser}) => {
             <form onSubmit={submitHandler}>
                 <label htmlFor='username'>
                     Username
-                    <input type='text' name='username' id='username' required/>
+                    <input type='text' name='username' id='username' defaultValue='demo' required/>
                 </label>
 
                 <label htmlFor='username'>
                     Password
-                    <input type='password' name='password' id='password' required/>
+                    <input type='password' name='password' id='password' defaultValue='demo' required/>
                 </label>
 
                 <button type='submit'>

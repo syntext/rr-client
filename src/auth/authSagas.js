@@ -1,19 +1,24 @@
-import {put, takeLatest} from 'redux-saga/effects'
+import {call, put, takeLatest} from 'redux-saga/effects'
+import apiClient from '../common/apiClient'
 import {
-    USER_LOGIN, USER_LOGIN_START, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_LOGOUT_START, USER_LOGOUT_SUCCESS
+    AUTH_TOKEN_RECEIVED,
+    USER_LOGIN,
+    USER_LOGIN_START,
+    USER_LOGIN_SUCCESS,
+    USER_LOGOUT,
+    USER_LOGOUT_START,
+    USER_LOGOUT_SUCCESS
 } from './authActionTypes'
 
 function* loginUser() {
     yield put({type: USER_LOGIN_START})
 
-    // todo: authentication request
-    const result = {
-        token: 'abc'
-    }
+    const response = yield call(apiClient().post, 'http://localhost:8009/login', {/* todo: user data */})
 
-    localStorage.setItem('token', result.token)
+    localStorage.setItem('token', response.data.token)
 
-    yield put({type: USER_LOGIN_SUCCESS, payload: result})
+    yield put({type: AUTH_TOKEN_RECEIVED, payload: response.data})
+    yield put({type: USER_LOGIN_SUCCESS})
 }
 
 function* logoutUser() {

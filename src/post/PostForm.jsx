@@ -11,7 +11,7 @@ const PostForm = ({onSubmit: submit}) => {
     return (
         <div className='post-form'>
             <form onSubmit={onSubmit}>
-                <input type='text' name='title'/>
+                <input type='text' name='title' defaultValue='New item!'/>
                 <button type='submit'>Add Post</button>
             </form>
         </div>

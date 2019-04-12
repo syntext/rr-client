@@ -3,11 +3,10 @@ import {NOTIFICATION_ADD, NOTIFICATION_REMOVE} from './notificationTypes'
 
 const initialState = {
     messages: [],
-    infoMessages: [],
 }
 
 const addNotification = (state, {message, httpResponse}) => {
-    const result = message || httpResponse ? `${httpResponse.status} ${httpResponse.statusText}`.trim() : 'null'
+    const result = message || (httpResponse ? `${httpResponse.status} ${httpResponse.statusText}`.trim() : 'null')
     return {
         messages: [
             ...state.messages,
