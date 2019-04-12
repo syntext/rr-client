@@ -20,23 +20,6 @@ instance.interceptors.response.use((response) => {
     return Promise.reject(e)
 })
 
-instance.interceptors.response.use((response) => {
-    if (response.headers['set-authorization']) {
-        store.dispatch({
-            type: AUTH_TOKEN_RECEIVED,
-            payload: {
-                token: response.headers['set-authorization']
-            }
-        })
-    }
-    return response
-}, (e) => {
-    if (e.response.status === 403) {
-        store.dispatch({type: AUTH_FAILED})
-    }
-    return Promise.reject(e)
-})
-
 export default class ApiClient {
     static get = (url, config) => {
         this.setAuthHeader()
