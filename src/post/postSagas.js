@@ -1,5 +1,5 @@
 import {call, put, takeLatest} from 'redux-saga/effects'
-import apiClient from '../common/apiClient'
+import Api from '../common/ApiClient'
 import {putApiExceptionNotification} from '../common/sagaUtils'
 import {
     POSTS_CREATE,
@@ -16,7 +16,7 @@ function* fetchPosts() {
     yield put({type: POSTS_FETCH_START})
 
     try {
-        const response = yield call(apiClient().get, 'http://localhost:8009/posts')
+        const response = yield call(Api.get, 'http://localhost:8009/posts')
         const posts = response.data
 
         yield put({type: POSTS_FETCH_SUCCESS, payload: posts})
@@ -30,7 +30,7 @@ function* newPost(action) {
     yield put({type: POSTS_CREATE_START})
 
     try {
-        const response = yield call(apiClient().post, 'http://localhost:8009/posts', action.payload)
+        const response = yield call(Api.post, 'http://localhost:8009/posts', action.payload)
 
         yield put({type: POSTS_CREATE_SUCCESS, payload: response.data})
     } catch (e) {

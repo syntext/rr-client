@@ -1,5 +1,5 @@
 import {call, put, takeLatest} from 'redux-saga/effects'
-import apiClient from '../common/apiClient'
+import Api from '../common/ApiClient'
 import {
     AUTH_TOKEN_RECEIVED,
     USER_LOGIN,
@@ -13,7 +13,7 @@ import {
 function* loginUser() {
     yield put({type: USER_LOGIN_START})
 
-    const response = yield call(apiClient().post, 'http://localhost:8009/login', {/* todo: user data */})
+    const response = yield call(Api.post, 'http://localhost:8009/login', {/* todo: user data */})
 
     localStorage.setItem('token', response.data.token)
 
