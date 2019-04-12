@@ -10,10 +10,12 @@ import {
     USER_LOGOUT_SUCCESS
 } from './authActionTypes'
 
-function* loginUser() {
+function* loginUser(action) {
     yield put({type: USER_LOGIN_START})
 
-    const response = yield call(Api.post, 'login', {/* todo: user data */})
+    const {username, password} = action.payload
+
+    const response = yield call(Api.post, 'login', {username, password})
 
     localStorage.setItem('token', response.data.token)
 
@@ -25,6 +27,8 @@ function* logoutUser() {
     yield put({type: USER_LOGOUT_START})
 
     localStorage.removeItem('token')
+
+    yield call(Api.post, 'logout')
 
     yield put({type: USER_LOGOUT_SUCCESS})
 }

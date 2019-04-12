@@ -17,10 +17,10 @@ instance.interceptors.response.use((response) => {
     }
     return response
 }, (e) => {
-    if (e.response.status === 403) {
+    if (e.response.status === 401) {
         store.dispatch({type: AUTH_FAILED})
     }
-    return Promise.reject(e)
+    return e
 })
 
 export default class ApiClient {
