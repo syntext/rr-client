@@ -5,6 +5,7 @@ import {NavLink, Route} from 'react-router-dom'
 
 const RestrictedRouteContainer = ({component: Component, auth, ...rest}) => (
     <Route
+        {...rest}
         render={(props) => (
             auth.token !== null
                 ? <Component {...props}/>
@@ -14,7 +15,6 @@ const RestrictedRouteContainer = ({component: Component, auth, ...rest}) => (
                     </div>
                 )
         )}
-        {...rest}
     />
 )
 

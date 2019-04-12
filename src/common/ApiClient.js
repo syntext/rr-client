@@ -1,15 +1,16 @@
 import axios from 'axios'
 import store from '../app/store'
-import {AUTH_FAILED, AUTH_TOKEN_RECEIVED} from '../auth/authActionTypes'
+import {AUTH_TOKEN_RECEIVE} from '../auth/authActionTypes'
 import appConfig from '../config'
 
 const instance = axios.create({
     baseURL: appConfig.baseApiUrl
 })
+
 instance.interceptors.response.use((response) => {
     if (response.headers['set-authorization']) {
         store.dispatch({
-            type: AUTH_TOKEN_RECEIVED,
+            type: AUTH_TOKEN_RECEIVE,
             payload: {
                 token: response.headers['set-authorization']
             }
@@ -18,9 +19,9 @@ instance.interceptors.response.use((response) => {
     return response
 }, (e) => {
     if (e.response.status === 401) {
-        store.dispatch({type: AUTH_FAILED})
+        window.dispatchEvent(new Event('authRequired'))
     }
-    return e
+    throw e
 })
 
 export default class ApiClient {
@@ -54,10 +55,8 @@ export default class ApiClient {
     static setAuthHeader = () => {
         const {token} = store.getState().auth
 
-        if (token) {
-            instance.defaults.headers.common = {
-                Authorization: `Bearer ${token}`
-            }
-        }
+        instance.defaults.headers.common = token ? {
+            Authorization: `Bearer ${token}`
+        } : {}
     }
 }

@@ -5,6 +5,10 @@
     margin-bottom: 10px;
 
     button {
-        float: right
+        margin-left: 5px;
+        background-color: transparent;
+        border: 0;
+        text-decoration: underline;
+        cursor: pointer;
     }
 }

@@ -11,20 +11,30 @@ import Header from './Header'
 import history from './history'
 import PageNotFound from './PageNotFound'
 
-const AppContainer = () => (
-    <Router history={history}>
-        <Route path='/' component={Header}/>
-        <div className='body-wrapper'>
-            <NotificationContainer/>
-            <Switch>
-                <Route path='/' exact component={PostPageContainer}/>
-                <Route path='/login' component={LoginPageContainer}/>
-                <Route path='/logout' component={LogoutPageContainer}/>
-                <RestrictedRouteContainer path='/users' component={UserPageContainer}/>
-                <Route component={PageNotFound}/>
-            </Switch>
-        </div>
-    </Router>
-)
+class AppContainer extends React.Component {
+    componentDidMount() {
+        window.addEventListener('authRequired', () => {
+            history.push('/login')
+        })
+    }
+
+    render() {
+        return (
+            <Router history={history}>
+                <Route path='/' component={Header}/>
+                <div className='body-wrapper'>
+                    <NotificationContainer/>
+                    <Switch>
+                        <Route path='/' exact component={PostPageContainer}/>
+                        <Route path='/login' component={LoginPageContainer}/>
+                        <Route path='/logout' component={LogoutPageContainer}/>
+                        <RestrictedRouteContainer path='/users' component={UserPageContainer}/>
+                        <Route component={PageNotFound}/>
+                    </Switch>
+                </div>
+            </Router>
+        )
+    }
+}
 
 export default connect(null, null)(AppContainer)
