@@ -1,5 +1,5 @@
-RR Client
-=========
+RR Client - Boilerplate
+=======================
 
 **Example ReactJS client side app**
 
