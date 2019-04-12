@@ -1,8 +1,11 @@
 import axios from 'axios'
 import store from '../app/store'
 import {AUTH_FAILED, AUTH_TOKEN_RECEIVED} from '../auth/authActionTypes'
+import appConfig from '../config'
 
-const instance = axios.create()
+const instance = axios.create({
+    baseURL: appConfig.baseApiUrl
+})
 instance.interceptors.response.use((response) => {
     if (response.headers['set-authorization']) {
         store.dispatch({

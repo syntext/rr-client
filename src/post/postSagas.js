@@ -16,7 +16,7 @@ function* fetchPosts() {
     yield put({type: POSTS_FETCH_START})
 
     try {
-        const response = yield call(Api.get, 'http://localhost:8009/posts')
+        const response = yield call(Api.get, 'posts')
         const posts = response.data
 
         yield put({type: POSTS_FETCH_SUCCESS, payload: posts})
@@ -30,7 +30,7 @@ function* newPost(action) {
     yield put({type: POSTS_CREATE_START})
 
     try {
-        const response = yield call(Api.post, 'http://localhost:8009/posts', action.payload)
+        const response = yield call(Api.post, 'posts', action.payload)
 
         yield put({type: POSTS_CREATE_SUCCESS, payload: response.data})
     } catch (e) {

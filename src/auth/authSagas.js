@@ -13,7 +13,7 @@ import {
 function* loginUser() {
     yield put({type: USER_LOGIN_START})
 
-    const response = yield call(Api.post, 'http://localhost:8009/login', {/* todo: user data */})
+    const response = yield call(Api.post, 'login', {/* todo: user data */})
 
     localStorage.setItem('token', response.data.token)
 
