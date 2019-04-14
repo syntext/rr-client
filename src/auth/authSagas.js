@@ -1,6 +1,7 @@
 import {call, put, takeLatest} from 'redux-saga/effects'
 import Api from '../common/ApiClient'
 import {
+    AUTH_REQUIRED,
     AUTH_TOKEN_RECEIVE,
     USER_LOGIN,
     USER_LOGIN_FAILED,
@@ -12,6 +13,14 @@ import {
     USER_LOGOUT_SUCCESS
 } from './authActionTypes'
 
+function storeToken(token) {
+    localStorage.setItem('token', token)
+}
+
+function clearToken() {
+    localStorage.removeItem('token')
+}
+
 function* loginUser(action) {
     yield put({type: USER_LOGIN_START})
 
@@ -20,7 +29,7 @@ function* loginUser(action) {
     try {
         const response = yield call(Api.post, 'login', {username, password})
 
-        localStorage.setItem('token', response.data.token)
+        yield call(storeToken, response.data.token)
 
         yield put({type: AUTH_TOKEN_RECEIVE, payload: response.data})
         yield put({type: USER_LOGIN_SUCCESS})
@@ -32,7 +41,7 @@ function* loginUser(action) {
 function* logoutUser() {
     yield put({type: USER_LOGOUT_START})
 
-    localStorage.removeItem('token')
+    yield call(clearToken)
 
     try {
         yield call(Api.post, 'logout')
@@ -49,4 +58,8 @@ export function* watchLoginUser() {
 
 export function* watchLogoutUser() {
     yield takeLatest(USER_LOGOUT, logoutUser)
+}
+
+export function* watchAuthRequired() {
+    yield takeLatest(AUTH_REQUIRED, clearToken)
 }

@@ -14,7 +14,7 @@ import PageNotFound from './PageNotFound'
 class AppContainer extends React.Component {
     componentDidMount() {
         window.addEventListener('authRequired', () => {
-            history.push('/login')
+            setTimeout(() => history.push('/login'))
         })
     }
 

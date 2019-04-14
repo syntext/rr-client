@@ -1,6 +1,6 @@
 import axios from 'axios'
 import store from '../app/store'
-import {AUTH_TOKEN_RECEIVE} from '../auth/authActionTypes'
+import {AUTH_REQUIRED, AUTH_TOKEN_RECEIVE} from '../auth/authActionTypes'
 import appConfig from '../config'
 
 const instance = axios.create({
@@ -18,8 +18,9 @@ instance.interceptors.response.use((response) => {
     }
     return response
 }, (e) => {
-    if (e.response.status === 401) {
+    if (e.response.status === 401 && !e.config.url.endsWith('logout')) {
         window.dispatchEvent(new Event('authRequired'))
+        store.dispatch({type: AUTH_REQUIRED})
     }
     throw e
 })

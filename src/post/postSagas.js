@@ -1,6 +1,6 @@
 import {call, put, takeLatest} from 'redux-saga/effects'
 import Api from '../common/ApiClient'
-import {putApiExceptionNotification} from '../common/sagaUtils'
+import {createApiExceptionNotificationAction} from '../common/sagaUtils'
 import {
     POSTS_CREATE,
     POSTS_CREATE_FAILED,
@@ -21,7 +21,7 @@ function* fetchPosts() {
 
         yield put({type: POSTS_FETCH_SUCCESS, payload: posts})
     } catch (e) {
-        yield putApiExceptionNotification(e)
+        yield put(yield call(createApiExceptionNotificationAction, e))
         yield put({type: POSTS_FETCH_FAILED})
     }
 }
@@ -34,7 +34,7 @@ function* newPost(action) {
 
         yield put({type: POSTS_CREATE_SUCCESS, payload: response.data})
     } catch (e) {
-        yield putApiExceptionNotification(e)
+        yield put(yield call(createApiExceptionNotificationAction, e))
         yield put({type: POSTS_CREATE_FAILED})
     }
 }

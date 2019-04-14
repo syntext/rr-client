@@ -1,3 +1,4 @@
+export const AUTH_REQUIRED = 'AUTH_REQUIRED'
 export const AUTH_TOKEN_RECEIVE = 'AUTH_TOKEN_RECEIVE'
 
 export const USER_LOGIN = 'USER_LOGIN'
