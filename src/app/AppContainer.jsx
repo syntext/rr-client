@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import NotificationContainer from '../notification/NotificationContainer'
 import AppRouter from './AppRouter'
 import history from './history'
+import './styles.scss'
 
 class AppContainer extends React.Component {
     componentDidMount() {
