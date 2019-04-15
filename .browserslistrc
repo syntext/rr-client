@@ -1,0 +1,9 @@
+# This application supports the following browsers
+# See: https://github.com/browserslist/browserslist#queries
+
+last 1 Chrome versions
+last 1 Firefox versions
+last 1 ChromeAndroid versions
+last 1 Safari versions
+last 1 iOS versions
+not dead
