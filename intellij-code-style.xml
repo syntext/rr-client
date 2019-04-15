@@ -1,4 +1,4 @@
-<code_scheme name="Project" version="173">
+<code_scheme name="Project copy" version="173">
   <option name="LINE_SEPARATOR" value="&#xA;" />
   <option name="RIGHT_MARGIN" value="140" />
   <option name="FORMATTER_TAGS_ENABLED" value="true" />
@@ -79,7 +79,6 @@
   <codeStyleSettings language="JSON">
     <indentOptions>
       <option name="INDENT_SIZE" value="4" />
-      <option name="USE_TAB_CHARACTER" value="true" />
     </indentOptions>
   </codeStyleSettings>
   <codeStyleSettings language="LESS">
@@ -131,8 +130,6 @@
   </codeStyleSettings>
   <codeStyleSettings language="SQL">
     <indentOptions>
-      <option name="INDENT_SIZE" value="4" />
-      <option name="TAB_SIZE" value="4" />
       <option name="USE_TAB_CHARACTER" value="true" />
     </indentOptions>
   </codeStyleSettings>
