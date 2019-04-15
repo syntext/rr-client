@@ -7,7 +7,6 @@ import RestrictedRouteContainer from '../auth/RestrictedRouteContainer'
 import NotificationContainer from '../notification/NotificationContainer'
 import PostPageContainer from '../post/PostPageContainer'
 import UserPageContainer from '../user/UserPageContainer'
-import Header from './Header'
 import history from './history'
 import PageNotFound from './PageNotFound'
 
@@ -20,10 +19,8 @@ class AppContainer extends React.Component {
 
     render() {
         return (
-            <Router history={history}>
-                <Route path='/' component={Header}/>
-                <div className='body-wrapper'>
-                    <NotificationContainer/>
+            <>
+                <Router history={history}>
                     <Switch>
                         <Route path='/' exact component={PostPageContainer}/>
                         <Route path='/login' component={LoginPageContainer}/>
@@ -31,8 +28,9 @@ class AppContainer extends React.Component {
                         <RestrictedRouteContainer path='/users' component={UserPageContainer}/>
                         <Route component={PageNotFound}/>
                     </Switch>
-                </div>
-            </Router>
+                </Router>
+                <NotificationContainer/>
+            </>
         )
     }
 }

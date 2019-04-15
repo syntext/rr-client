@@ -26,7 +26,7 @@ function* fetchPosts() {
     }
 }
 
-function* newPost(action) {
+function* createPost(action) {
     yield put({type: POSTS_CREATE_START})
 
     try {
@@ -43,6 +43,6 @@ export function* watchFetchPosts() {
     yield takeLatest(POSTS_FETCH, fetchPosts)
 }
 
-export function* watchNewPost() {
-    yield takeLatest(POSTS_CREATE, newPost)
+export function* watchCreatePost() {
+    yield takeLatest(POSTS_CREATE, createPost)
 }

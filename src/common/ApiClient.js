@@ -18,7 +18,7 @@ instance.interceptors.response.use((response) => {
     }
     return response
 }, (e) => {
-    if (e.response.status === 401 && !e.config.url.endsWith('logout')) {
+    if (e.response.status === 401) {
         window.dispatchEvent(new Event('authRequired'))
         store.dispatch({type: AUTH_REQUIRED})
     }

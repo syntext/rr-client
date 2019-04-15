@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import LoginForm from './LoginForm'
-import './LoginPage.scss'
 
 const LoginPage = ({onLogin}) => (
-    <div className='login-page'>
+    <div className='page login-page'>
         <LoginForm onLogin={onLogin}/>
     </div>
 )

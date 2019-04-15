@@ -10,7 +10,7 @@ const RestrictedRouteContainer = ({component: Component, auth, ...rest}) => (
             auth.token !== null
                 ? <Component {...props}/>
                 : (
-                    <div className='restricted-content'>
+                    <div className='page restricted-content'>
                         You need to be logged in to access this page. Click <NavLink to='/login'>here</NavLink> to login.
                     </div>
                 )

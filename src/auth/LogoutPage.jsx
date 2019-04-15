@@ -11,11 +11,11 @@ const LogoutPage = () => {
     })
 
     if (ttl === 0) {
-        return <Redirect to='/login'/>
+        return <Redirect to='/'/>
     }
 
     return (
-        <div className='logout-page'>
+        <div className='page logout-page'>
             You have been logged out and will be redirected in {ttl} seconds...
         </div>
     )

@@ -15,7 +15,10 @@ export default (state = initialState, action) => {
         case POSTS_CREATE_SUCCESS:
             return {
                 ...state,
-                item: action.payload,
+                items: [
+                    action.payload,
+                    ...state.items
+                ],
             }
         default:
             return state

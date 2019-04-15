@@ -9,12 +9,6 @@ class PostPageContainer extends React.Component {
         this.props.fetchPosts()
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.newPost) {
-            this.props.posts.unshift(nextProps.newPost)
-        }
-    }
-
     render() {
         return (
             <PostPage
@@ -29,16 +23,10 @@ PostPageContainer.propTypes = {
     posts: PropTypes.array.isRequired,
     fetchPosts: PropTypes.func.isRequired,
     createPost: PropTypes.func.isRequired,
-    newPost: PropTypes.object
-}
-
-PostPageContainer.defaultProps = {
-    newPost: undefined,
 }
 
 const mapStateToProps = (state) => ({
     posts: state.posts.items,
-    newPost: state.posts.item,
 })
 
 export default connect(mapStateToProps, {fetchPosts, createPost})(PostPageContainer)
