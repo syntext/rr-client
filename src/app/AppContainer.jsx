@@ -1,16 +1,14 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import {connect} from 'react-redux'
+import {addAuthRequiredEventListener} from '../auth/authEventListeners'
 import NotificationContainer from '../notification/NotificationContainer'
 import AppRouter from './AppRouter'
-import history from './history'
 import './styles.scss'
 
 class AppContainer extends React.Component {
     componentDidMount() {
-        window.addEventListener('authRequired', () => {
-            setTimeout(() => history.push('/login'))
-        })
+        addAuthRequiredEventListener()
     }
 
     render() {
