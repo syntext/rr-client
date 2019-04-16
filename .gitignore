@@ -4,3 +4,4 @@
 dist/*
 locale/_build/*
 locale/**/*.js
+src/config.js
