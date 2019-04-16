@@ -36,7 +36,7 @@ module.exports = (env, argv) => ({
         './src/index.jsx'
     ],
     output: {
-        filename: argv.mode === 'production' ? '[name].[chunkhash].js' : '[name].[hash].js',
+        filename: argv.mode === 'development' ? '[name].[hash].js' : '[name].[chunkhash].js',
         publicPath: '/',
     },
     optimization: {
