@@ -47,4 +47,4 @@ npm run prod
 Otherwise there will be no benefits from using these optimisations. If you are forced to use HTTP/1 then consider disabling it.
 - To analyse dependency and bundle size use [webpack-bundle-size-analyzer](https://github.com/robertknight/webpack-bundle-size-analyzer).
 - `@lingui/macro` is actually a dev dependency but included as regular dependency in `package.json` to avoid eslint error triggered by 
-`import/no-extraneous-dependencies`. The code does not seem to be included when building the final bundle.
+`import/no-extraneous-dependencies`. This does not affect the (production) build.
