@@ -4,13 +4,13 @@ RR Client - Boilerplate
 **Example ReactJS client side app**
 
 - ReactJS
-- Redux
 - React Router
+- Redux
 - Redux Saga
-- Authentication with JWT
 - SASS
 - Axios HTTP client
-- LinguiJS internationalization
+- LinguiJS internationalisation
+- JWT authentication
 - ESLint
 - EditorConfig
 - WebPack
@@ -24,7 +24,7 @@ RR Client - Boilerplate
 Build & start development server with hot deployment
 
 ```
-npm start
+npm run start
 ```
 
 Build for development:
