@@ -1,7 +1,7 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const path = require('path')
 
-module.exports = {
+module.exports = (env, argv) => ({
     module: {
         rules: [
             {
@@ -33,12 +33,16 @@ module.exports = {
         ],
     },
     entry: [
-        'babel-polyfill',
         './src/index.jsx'
     ],
     output: {
-        filename: 'bundle.js',
+        filename: argv.mode === 'production' ? '[name].[chunkhash].js' : '[name].[hash].js',
         publicPath: '/',
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+        },
     },
     plugins: [
         new HtmlWebPackPlugin({
@@ -54,4 +58,4 @@ module.exports = {
         writeToDisk: false,
         historyApiFallback: true
     },
-}
+})
