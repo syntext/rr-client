@@ -43,6 +43,7 @@ npm run prod
 
 **Some notes**
 
+- Make sure you copy `src/config.template.js` to `src/config.js` before running the application after checking out from the repository.
 - Due to the current optimisation settings in Webpack of creating multiple chunks of files it is highly recommended to use HTTP/2. 
 Otherwise there will be no benefits from using these optimisations. If you are forced to use HTTP/1 then consider disabling it.
 - To analyse dependency and bundle size use [webpack-bundle-size-analyzer](https://github.com/robertknight/webpack-bundle-size-analyzer).
