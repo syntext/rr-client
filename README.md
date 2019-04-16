@@ -15,6 +15,8 @@ RR Client - Boilerplate
 
 ---
 
+**Build & run**
+
 Build & start development server with hot deployment
 
 ```
@@ -32,3 +34,10 @@ Build for production:
 ```
 npm run prod
 ```
+
+---
+
+**Notes**
+
+- `@lingui/macro` is actually a dev dependency but included as regular dependency in `package.json` to avoid eslint error triggered by 
+`import/no-extraneous-dependencies`. The code does not seem to be included when building the final bundle.

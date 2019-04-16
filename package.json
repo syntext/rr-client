@@ -6,7 +6,10 @@
         "start": "webpack-dev-server --open --mode development",
         "dev": "webpack --mode development",
         "prod": "webpack --mode production",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "add-locale": "lingui add-locale",
+        "extract": "lingui extract",
+        "compile": "lingui compile"
     },
     "repository": {
         "type": "git",
@@ -16,6 +19,9 @@
     "license": "ISC",
     "homepage": "https://bitbucket.org/roanm/rr-client#readme",
     "dependencies": {
+        "@lingui/core": "^2.7.4",
+        "@lingui/macro": "^2.7.4",
+        "@lingui/react": "^2.7.4",
         "axios": "^0.18.0",
         "history": "^4.9.0",
         "jwt-decode": "^2.2.0",
@@ -31,10 +37,15 @@
     "devDependencies": {
         "@babel/core": "^7.4.3",
         "@babel/plugin-proposal-class-properties": "^7.4.0",
+        "@babel/plugin-syntax-dynamic-import": "^7.2.0",
         "@babel/preset-env": "^7.4.3",
         "@babel/preset-react": "^7.0.0",
+        "@lingui/cli": "^2.7.4",
+        "@lingui/loader": "^2.7.4",
+        "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "^10.0.1",
         "babel-loader": "^8.0.5",
+        "babel-plugin-macros": "^2.5.1",
         "babel-polyfill": "^6.26.0",
         "css-loader": "^2.1.1",
         "eslint": "^5.16.0",
